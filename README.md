@@ -20,6 +20,18 @@ AntD site theme package for the [dumi](https://d.umijs.org) framework fork from 
 npm install dumi-theme-nocobase -D
 ```
 
+`.dumirc.ts` config:
+
+```ts
+import { defineConfig } from 'dumi';
+import { defineThemeConfig } from 'dumi-theme-nocobase';
+
+export default defineConfig({
+  // ....
+  themeConfig: defineThemeConfig({})
+});
+```
+
 ## Develop
 
 ```bash
