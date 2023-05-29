@@ -14,6 +14,8 @@
     "lib": ["dom", "es2021"],
     "skipLibCheck": true,
     "stripInternal": true,
+    "skipDefaultLibCheck": true,
+    "declaration": true,
     "baseUrl": "./",
     "paths": {
       "@@/*": ["example/.dumi/tmp/*"],

@@ -13,7 +13,7 @@
     "url": "https://github.com/nocobase/dumi-theme-nocobase"
   },
   "license": "MIT",
-  "types": "dist/types.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
