@@ -22,9 +22,7 @@
     "build:docs": "cross-env APP_ROOT=example dumi build",
     "dev": "father dev",
     "docs": "cross-env APP_ROOT=example dumi dev",
-    "lint": "npm run lint:es && npm run lint:css",
-    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
-    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && father link-dev-theme",
     "prepublishOnly": "father doctor && npm run build"
   },
