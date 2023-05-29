@@ -5,7 +5,7 @@ toc: false
 timeline: true
 ---
 
-`dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
+`dumi-theme-nocobase` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
 ## 0.2.5
 

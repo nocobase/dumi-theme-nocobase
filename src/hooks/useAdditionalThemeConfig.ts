@@ -1,4 +1,4 @@
-// 获取 dumi-theme-antd 额外的配置
+// 获取 dumi-theme-nocobase 额外的配置
 import { useSiteData } from 'dumi';
 
 import type { IAllThemeConfig } from '../types';

@@ -5,8 +5,8 @@ import { defineThemeConfig } from './.dumi/theme';
 export default defineConfig({
   // disable mfsu for HMR
   mfsu: false,
-  publicPath: '/dumi-theme-antd/',
-  base: '/dumi-theme-antd',
+  publicPath: '/dumi-theme-nocobase/',
+  base: '/dumi-theme-nocobase',
   favicons: ['https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'],
   locales: [
     { id: 'zh-CN', name: '中文', suffix: '' },
@@ -15,7 +15,7 @@ export default defineConfig({
   extraBabelPresets: ['@emotion/babel-preset-css-prop'],
   // pass theme config
   themeConfig: defineThemeConfig({
-    name: 'dumi-theme-antd',
+    name: 'dumi-theme-nocobase',
     nav: {
       'zh-CN': [
         { title: '指南', link: '/guide/introduce' },
@@ -26,8 +26,8 @@ export default defineConfig({
         { title: 'config', link: '/config/base-en' }
       ]
     },
-    footer: 'KuangPF | Copyright © 2022-present',
-    github: 'https://github.com/KuangPF/dumi-theme-antd',
+    footer: 'nocobase | Copyright © 2022-present',
+    github: 'https://github.com/nocobase/dumi-theme-nocobase',
     localesEnhance: [
       { id: 'zh-CN', switchPrefix: '中' },
       { id: 'en-US', switchPrefix: 'en' }

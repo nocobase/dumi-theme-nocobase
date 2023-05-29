@@ -5,7 +5,7 @@ nav:
 title: Base
 ---
 
-`dumi-theme-antd` In order to better adapt to the theme style of the antd v5 official website, some unique fields have been added and placed in the `themeConfig` field of the `dumi` theme configuration item. The specific configuration fields are as follows:
+`dumi-theme-nocobase` In order to better adapt to the theme style of the antd v5 official website, some unique fields have been added and placed in the `themeConfig` field of the `dumi` theme configuration item. The specific configuration fields are as follows:
 
 ## Basic configuration
 
@@ -43,7 +43,7 @@ Home page header banner image configuration options
 ### localesEnhance
 
 - type：`ILocaleEnhance[]`
-- default：`dumi-theme-antd`
+- default：`dumi-theme-nocobase`
 
 ```ts
 interface ILocaleEnhance {

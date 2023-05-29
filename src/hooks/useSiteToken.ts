@@ -40,7 +40,7 @@ const useSiteToken = () => {
       boxShadowCard,
       siteTheme
     },
-    /** dumi-theme-antd 站点 class 前缀 */
+    /** dumi-theme-nocobase 站点 class 前缀 */
     siteCls: 'dumi-antd'
   };
 };

@@ -5,7 +5,7 @@ nav:
 title: 基础
 ---
 
-`dumi-theme-antd` 为了更好地适配 antd v5 官网主题风格，增加了一些特有字段，并将其置于 `dumi` 主题配置项 `themeConfig` 字段中，具体配置字段如下：
+`dumi-theme-nocobase` 为了更好地适配 antd v5 官网主题风格，增加了一些特有字段，并将其置于 `dumi` 主题配置项 `themeConfig` 字段中，具体配置字段如下：
 
 ## 基础配置
 
@@ -43,7 +43,7 @@ const bannerConfigDefault: IBannerConfig = {
 ### localesEnhance
 
 - 类型：`ILocaleEnhance[]`
-- 默认值：`dumi-theme-antd`
+- 默认值：`dumi-theme-nocobase`
 
 ```ts
 interface ILocaleEnhance {
