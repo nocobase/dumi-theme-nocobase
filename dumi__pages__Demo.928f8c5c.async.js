@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdumi_theme_nocobase=self.webpackChunkdumi_theme_nocobase||[]).push([[448],{12535:function(i,n,e){e.r(n),e.d(n,{default:function(){return u}});var a=e(80645),t=e(67294),m=function(){var d=(0,a.UO)(),r=d.id,s=(0,a.WF)(),c=s.demos,f=c[r]||{},o=f.component;return o&&(0,t.createElement)(o)},u=m}}]);
