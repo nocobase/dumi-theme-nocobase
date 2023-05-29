@@ -4,7 +4,7 @@
 
 AntD site theme package for the [dumi](https://d.umijs.org) framework fork from [dumi-theme-antd](https://github.com/KuangPF/dumi-theme-antd).
 
-[![NPM version](https://img.shields.io/npm/v/dumi-theme-nocobase.svg?style=flat)](https://npmjs.org/package/dumi-theme-nocobase) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-nocobase.svg?style=flat)](https://npmjs.org/package/dumi-theme-nocobase) [![Github Actions](https://github.com/KuangPF/dumi-theme-nocobase/workflows/Deploy/badge.svg)](https://github.com/nocobase/dumi-theme-nocobase/actions)
+[![NPM version](https://img.shields.io/npm/v/dumi-theme-nocobase.svg?style=flat)](https://npmjs.org/package/dumi-theme-nocobase) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-nocobase.svg?style=flat)](https://npmjs.org/package/dumi-theme-nocobase) [![Deploy](https://github.com/nocobase/dumi-theme-nocobase/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/nocobase/dumi-theme-nocobase/actions/workflows/gh-pages.yml)
 
 </div>
 
