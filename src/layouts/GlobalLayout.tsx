@@ -1,7 +1,7 @@
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'dumi';
+import { Outlet, createSearchParams, usePrefersColor, useSearchParams } from 'dumi';
 import type { FC } from 'react';
-import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ThemeName } from '../common/ThemeSwitch';
 import ThemeSwitch from '../common/ThemeSwitch';
 import type { SiteContextProps } from '../slots/SiteContext';
@@ -68,13 +68,11 @@ const GlobalLayout: FC = () => {
 
   useEffect(() => {
     const _theme = searchParams.getAll('theme') as ThemeName[];
-    startTransition(() => {
-      setSiteState({
-        theme: _theme
-      });
-      // Handle isMobile
-      updateMobileMode();
+    setSiteState({
+      theme: _theme
     });
+    // Handle isMobile
+    updateMobileMode();
     window.addEventListener('resize', updateMobileMode);
     return () => {
       window.removeEventListener('resize', updateMobileMode);
