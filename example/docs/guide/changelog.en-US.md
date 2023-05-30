@@ -7,6 +7,10 @@ timeline: true
 
 `dumi-theme-nocobase` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.7
+
+- 🐞 fix import `defineThemeConfig` error.
+
 ## 0.2.6
 
 - 🐞 update README.md and add package.json `main` field

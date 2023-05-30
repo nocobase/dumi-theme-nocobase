@@ -1,6 +1,6 @@
 {
   "name": "dumi-theme-nocobase",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "",
   "keywords": [
     "dumi",
@@ -13,10 +13,11 @@
     "url": "https://github.com/nocobase/dumi-theme-nocobase"
   },
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.js"
   ],
   "scripts": {
     "build": "father build",

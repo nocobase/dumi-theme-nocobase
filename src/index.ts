@@ -1,10 +1,7 @@
-import { IAllThemeConfig } from './types';
+import type { IAdditionalThemeConfig } from './types';
 
-/**
- * @description provider declaration of config files
- * @param {ThemeConfig} config theme config
- * @returns {ThemeConfig}
- */
-export function defineThemeConfig(config: IAllThemeConfig): IAllThemeConfig {
+function defineThemeConfig(config: IAdditionalThemeConfig): IAdditionalThemeConfig {
   return config;
 }
+
+export { defineThemeConfig };

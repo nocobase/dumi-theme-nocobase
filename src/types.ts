@@ -75,10 +75,22 @@ export interface IBannerConfig {
   bannerMobileImgUrl?: string;
 }
 
-interface IAdditionalThemeConfig {
+interface IAdditionalThemeConfig extends Omit<IThemeConfig, 'prefersColor' | 'socialLinks'> {
+  // 不知道为什么继承 IThemeConfig 的类型不生效，所以这里直接写了
+  name?: IThemeConfig['name'];
+  logo?: IThemeConfig['logo'];
+  nav?: IThemeConfig['nav'];
+  sidebar?: IThemeConfig['sidebar'];
+  footer?: IThemeConfig['footer'];
+  showLineNum?: IThemeConfig['showLineNum'];
+  prefersColor?: IThemeConfig['prefersColor'];
+  nprogress?: IThemeConfig['nprogress'];
+  // https://github.com/umijs/dumi/pull/1694
+  socialLinks?: Partial<IThemeConfig['socialLinks']>;
+
   /** github 链接 */
   github?: string;
-  /** 首页链接 */
+  /** 左上角点击后的链接，默认是首页 */
   homeLink?: string;
   /** 多语言额外配置，主要用于展示语言切换文字（只针对于两项多语言时） */
   localesEnhance?: ILocaleEnhance[];
@@ -100,10 +112,6 @@ interface IAdditionalThemeConfig {
   bannerConfig?: IBannerConfig;
   /** 增强模式的 sidebar */
   sidebarEnhance?: Record<string, SidebarEnhanceItems>;
-}
-
-export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {
-  socialLinks?: IThemeConfig['socialLinks']; // https://github.com/umijs/dumi/pull/1694
 }
 
 export { IAdditionalThemeConfig, ILocaleEnhance, IFeature, IAction };
