@@ -38,7 +38,7 @@ const useStyle = () => {
       position: absolute;
       top: 8px;
       right: 0;
-      width: 160px;
+      width: 250px;
       margin: 12px 0;
       padding: 8px 8px 8px 4px;
       backdrop-filter: blur(8px);
@@ -72,11 +72,11 @@ const useStyle = () => {
       }
     `,
     articleWrapper: css`
-      padding: 0 170px 32px 64px;
+      padding: 0 260px 32px 64px;
       flex: 1;
 
       &.rtl {
-        padding: 0 64px 144px 170px;
+        padding: 0 64px 144px 260px;
       }
 
       @media only screen and (max-width: ${token.screenLG}px) {

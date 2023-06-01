@@ -7,6 +7,10 @@ timeline: true
 
 `dumi-theme-nocobase` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.8
+
+- 💄 修改 table 样式和字号
+
 ## 0.2.7
 
 - 🐞 修复引入 `defineThemeConfig` 报错。

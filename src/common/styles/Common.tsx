@@ -52,6 +52,12 @@ export default () => {
           background: ${token.colorBgContainer};
           transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
+        .markdown {
+          .ant-alert {
+            margin: 24px 0;
+            padding: 10px 20px;
+          }
+        }
       `}
     />
   );

@@ -14,7 +14,7 @@ export default () => {
       styles={css`
         .markdown {
           color: ${token.colorText};
-          font-size: 14px;
+          font-size: 15px;
           line-height: 2;
         }
 
@@ -26,7 +26,6 @@ export default () => {
           max-width: calc(100% - 32px);
           max-height: 100%;
         }
-
         .markdown p > img {
           margin: 34px 0;
           box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
@@ -139,7 +138,7 @@ export default () => {
         .markdown code {
           margin: 0 1px;
           padding: 0.2em 0.4em;
-          font-size: 0.9em;
+          font-size: 1em;
           background: ${token.siteMarkdownCodeBg};
           border-radius: 3px;
           color: #d56161;
@@ -179,7 +178,7 @@ export default () => {
           border-radius: ${token.borderRadius}px;
           > pre.prism-code {
             padding: 12px 20px;
-            font-size: 13px;
+            font-size: 14px;
             line-height: 2;
           }
         }
@@ -225,6 +224,11 @@ export default () => {
         .markdown .waiting {
           color: #ccc;
           cursor: not-allowed;
+        }
+
+        .markdowna: hover {
+          opacity: 0.7;
+          text-decoration: underline;
         }
 
         .markdown a.edit-button {
@@ -317,12 +321,11 @@ export default () => {
               margin: 0;
               overflow-x: auto;
               overflow-y: hidden;
-              font-size: ${Math.max(token.fontSize - 1, 12)}px;
+              font-size: ${Math.max(token.fontSize - 1, 15)}px;
               font-family: ${token.codeFamily};
               line-height: ${token.lineHeight};
               border: 1px solid ${token.colorSplit};
               border-width: 0 1px;
-
               th {
                 border-width: 1px 0 2px;
               }
@@ -330,7 +333,6 @@ export default () => {
               td {
                 border-width: 1px 0;
                 &:first-of-type {
-                  width: 18%;
                   min-width: 58px;
                   color: #595959;
                   font-weight: 600;
@@ -338,32 +340,20 @@ export default () => {
                 }
 
                 &:nth-of-type(2) {
-                  width: 55%;
                   min-width: 160px;
                 }
 
                 &:nth-of-type(3) {
-                  width: 22%;
                   color: ${token['magenta-7']};
-                  font-size: ${Math.max(token.fontSize - 1, 12)}px;
+                  font-size: ${Math.max(token.fontSize - 1, 15)}px;
                 }
 
                 &:nth-of-type(4) {
-                  width: 15%;
-                  font-size: ${Math.max(token.fontSize - 1, 12)}px;
+                  font-size: ${Math.max(token.fontSize - 1, 15)}px;
                 }
 
                 &:nth-of-type(5) {
-                  width: 8%;
-                  font-size: ${Math.max(token.fontSize - 1, 12)}px;
-                }
-
-                &:nth-last-of-type(3):first-of-type {
-                  width: 38%;
-                }
-
-                &:nth-last-of-type(3):first-of-type ~ td:nth-last-of-type(2) {
-                  width: 70%;
+                  font-size: ${Math.max(token.fontSize - 1, 15)}px;
                 }
               }
             }
