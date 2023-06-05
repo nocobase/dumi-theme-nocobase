@@ -73,6 +73,7 @@ const useStyle = () => {
       .nav-search-wrapper {
         display: flex;
         flex: auto;
+        margin-left: 20px;
       }
 
       .dumi-default-search-bar {

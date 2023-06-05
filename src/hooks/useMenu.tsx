@@ -1,13 +1,14 @@
 import type { MenuProps } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
-import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
+import { useFullSidebarData, useLocation, useSidebarData } from 'dumi';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
+import ExternalLink from '../common/ExternalLink';
 import type {
   ISidebarGroupModePathItem,
   SidebarEnhanceGroupType,
-  SidebarEnhanceItems,
   SidebarEnhanceItemType,
+  SidebarEnhanceItems,
   SidebarEnhanceSubType,
   SidebarEnhanceType
 } from '../types';
@@ -57,11 +58,11 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
         return {
           key: menu,
           label: (
-            <Link to={`${menu}${search}`}>
+            <ExternalLink to={`${menu}${search}`}>
               {before}
               {linkTitleMap[menu]}
               {after}
-            </Link>
+            </ExternalLink>
           )
         };
       }
@@ -84,11 +85,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
       if (isItemMenu(menu)) {
         // { title: 'aaa', link: '/xxx' }
         return {
-          label: (
-            <Link target={menu.target} to={menu.link}>
-              {menu.title}
-            </Link>
-          ),
+          label: <ExternalLink to={menu.link}>{menu.title}</ExternalLink>,
           key: menu.link
         };
       }
@@ -120,7 +117,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               key: group?.title,
               children: group.children?.map((item) => ({
                 label: (
-                  <Link to={`${item.link}${search}`}>
+                  <ExternalLink to={`${item.link}${search}`}>
                     {before}
                     <span key="english">{removeTitleCode(item?.title)}</span>
                     {item.frontmatter && (
@@ -129,7 +126,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                       </span>
                     )}
                     {after}
-                  </Link>
+                  </ExternalLink>
                 ),
                 key: item.link.replace(/(-cn$)/g, '')
               }))
@@ -150,11 +147,11 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
             childItems.push(
               ...childrenGroup.default.map((item) => ({
                 label: (
-                  <Link to={`${item.link}${search}`}>
+                  <ExternalLink to={`${item.link}${search}`}>
                     {before}
                     {removeTitleCode(item?.title)}
                     {after}
-                  </Link>
+                  </ExternalLink>
                 ),
                 key: item.link.replace(/(-cn$)/g, '')
               }))
@@ -167,11 +164,11 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                   key: type,
                   children: children?.map((item) => ({
                     label: (
-                      <Link to={`${item.link}${search}`}>
+                      <ExternalLink to={`${item.link}${search}`}>
                         {before}
                         {removeTitleCode(item?.title)}
                         {after}
-                      </Link>
+                      </ExternalLink>
                     ),
                     key: item.link.replace(/(-cn$)/g, '')
                   }))
@@ -194,11 +191,11 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
           result.push(
             ...list.map((item) => ({
               label: (
-                <Link to={`${item.link}${search}`}>
+                <ExternalLink to={`${item.link}${search}`}>
                   {before}
                   {removeTitleCode(item?.title)}
                   {after}
-                </Link>
+                </ExternalLink>
               ),
               key: item.link.replace(/(-cn$)/g, '')
             }))

@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { css } from '@emotion/react';
-import { Link, useLocale, useLocation, useSiteData } from 'dumi';
+import { useLocale, useLocation, useSiteData } from 'dumi';
 import { Fragment, useMemo } from 'react';
+import ExternalLink from '../../common/ExternalLink';
 import useSiteToken from '../../hooks/useSiteToken';
 
 const useStyle = () => {
@@ -73,18 +74,12 @@ const Logo = () => {
 
   return (
     <h1>
-      {themeConfig.homeLink && themeConfig.homeLink.startsWith('http') ? (
-        <a href={themeConfig.homeLink} css={logo}>
-          {content}
-        </a>
-      ) : (
-        <Link
-          to={themeConfig.homeLink || ('base' in locale ? `${locale.base}${search}` : `/${search}`)}
-          css={logo}
-        >
-          {content}
-        </Link>
-      )}
+      <ExternalLink
+        to={themeConfig.homeLink || ('base' in locale ? `${locale.base}${search}` : `/${search}`)}
+        css={logo}
+      >
+        {content}
+      </ExternalLink>
     </h1>
   );
 };
