@@ -54,7 +54,9 @@ cd your-project && yarn link dumi-theme-nocobase # link to your project
 
 ### Publish to npm
 
-1、change `package.json` version 2、change `example/docs/guide/changelog.zh-CN.md` add changelog 2、add [new release](https://github.com/nocobase/dumi-theme-nocobase/releases/new) version, and ci will publish to npm
+1. change `package.json` version
+2. change `example/docs/guide/changelog.zh-CN.md` add changelog
+3. add [new release](https://github.com/nocobase/dumi-theme-nocobase/releases/new) version, and CI will publish to npm
 
 ## LICENSE
 
