@@ -34,11 +34,27 @@ export default defineConfig({
 
 ## Develop
 
+### Install & Run
+
 ```bash
 git clone https://github.com/nocobase/dumi-theme-nocobase
 npm install
 yarn docs
 ```
+
+### link to your project
+
+if you want to use this theme in your project and you want fix bug, you can link to your project.
+
+```bash
+yarn dev # watch model
+yarn link # link to global
+cd your-project && yarn link dumi-theme-nocobase # link to your project
+```
+
+### Publish to npm
+
+1、change `package.json` version 2、change `example/docs/guide/changelog.zh-CN.md` add changelog 2、add [new release](https://github.com/nocobase/dumi-theme-nocobase/releases/new) version, and ci will publish to npm
 
 ## LICENSE
 
