@@ -227,8 +227,8 @@ const Header: FC = () => {
       />
     ) : null,
     <More key="more" />,
-    <LangSwitch key={new Date().getTime()} />,
-    <HeaderExtra key="header-Extra" />
+    <HeaderExtra key="header-Extra" />,
+    <LangSwitch key={new Date().getTime()} />
   ];
   if (windowWidth < RESPONSIVE_XS) {
     menu = [navigationNode];
