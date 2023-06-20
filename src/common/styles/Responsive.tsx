@@ -28,6 +28,12 @@ export default () => {
         }
 
         @media only screen and (max-width: 767.99px) {
+          .ant-popover-inner-content {
+            width: 100%;
+          }
+          .ant-menu-light.ant-menu-root.ant-menu-inline {
+            border-right: 0;
+          }
           .preview-image-boxes {
             float: none;
             width: 100%;

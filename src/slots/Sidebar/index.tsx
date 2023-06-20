@@ -1,6 +1,6 @@
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Affix, Col, ConfigProvider, Menu } from 'antd';
+import { Affix, Col, ConfigProvider, FloatButton, Menu } from 'antd';
 import { useSidebarData } from 'dumi';
 import MobileMenu from 'rc-drawer';
 import 'rc-drawer/assets/index.css';
@@ -123,13 +123,6 @@ const useStyle = () => {
       &:hover .main-menu-inner {
         overflow-y: auto;
       }
-    `,
-    mobileMenu: css`
-      position: fixed;
-      z-index: 2;
-      bottom: 100px;
-      right: 20px;
-      cursor: pointer;
     `
   };
 };
@@ -203,9 +196,11 @@ const Sidebar: FC = () => {
         {menuChild}
       </MobileMenu>
       {(menuItems ?? []).length > 1 ? (
-        <div css={styles.mobileMenu} onClick={handleShowMobileMenu}>
-          <UnorderedListOutlined />
-        </div>
+        <FloatButton
+          icon={<UnorderedListOutlined />}
+          style={{ bottom: 110 }}
+          onClick={handleShowMobileMenu}
+        />
       ) : null}
     </React.Fragment>
   ) : (

@@ -1,11 +1,11 @@
 // 获取 dumi-theme-nocobase 额外的配置
 import { useSiteData } from 'dumi';
 
-import type { IAllThemeConfig } from '../types';
+import type { IAdditionalThemeConfig } from '../types';
 
 const useAdditionalThemeConfig = () => {
   const { themeConfig } = useSiteData();
-  const additionalThemeConfig: IAllThemeConfig = themeConfig;
+  const additionalThemeConfig: IAdditionalThemeConfig = themeConfig;
 
   return additionalThemeConfig;
 };
