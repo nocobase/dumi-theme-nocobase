@@ -61,10 +61,10 @@ const useStyle = () => {
           > ${antCls}-menu-item-group
           > ${antCls}-menu-item-group-list
           > ${antCls}-menu-item {
-          padding-left: 40px !important;
+          padding-left: 30px !important;
 
           ${antCls}-row-rtl & {
-            padding-right: 40px !important;
+            padding-right: 30px !important;
             padding-left: 16px !important;
           }
         }

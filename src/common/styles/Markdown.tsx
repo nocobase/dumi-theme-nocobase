@@ -23,7 +23,7 @@ export default () => {
         }
 
         .markdown img {
-          max-width: calc(100% - 32px);
+          max-width: calc(100% - 32px) !important;
           max-height: 100%;
         }
         .markdown p > img {

@@ -100,7 +100,10 @@ export default () => {
               margin-left: 64px;
             }
           }
-
+          .ant-menu-inline .ant-menu-item {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
           .drawer {
             .ant-menu-inline .ant-menu-item::after,
             .ant-menu-vertical .ant-menu-item::after {
