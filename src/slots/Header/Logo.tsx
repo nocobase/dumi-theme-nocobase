@@ -73,7 +73,7 @@ const Logo = () => {
   );
 
   return (
-    <h1>
+    <h1 style={{ marginBottom: 0 }}>
       <ExternalLink
         to={themeConfig.homeLink || ('base' in locale ? `${locale.base}${search}` : `/${search}`)}
         css={logo}

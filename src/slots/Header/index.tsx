@@ -116,7 +116,7 @@ const useStyle = () => {
       }
     `,
     menuRow: css`
-      display: flex;
+      display: flex !important;
       align-items: center;
       margin: 0;
 
