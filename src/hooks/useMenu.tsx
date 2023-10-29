@@ -78,7 +78,21 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
       if (isSubMenu(menu)) {
         return {
           key: menu.title,
-          label: <span>{menu.title}</span>,
+          label: menu.subTitle ? (
+            <span style={{ lineHeight: 1.2, display: 'block', paddingTop: 3 }}>
+              <span>{menu.title}</span>
+              {menu.subTitle && (
+                <span
+                  style={{ opacity: 0.5, display: 'block', fontSize: '0.8em', paddingTop: 3 }}
+                  className={'sub-title'}
+                >
+                  {menu.subTitle}
+                </span>
+              )}
+            </span>
+          ) : (
+            <span>{menu.title}</span>
+          ),
           children: menu.children.map(processMenu)
         };
       }

@@ -27,7 +27,7 @@ export default () => {
           max-height: 100%;
         }
         .markdown p > img {
-          margin: 34px 0;
+          /* margin: 34px 0; */
           box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
         }
 

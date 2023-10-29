@@ -49,6 +49,7 @@ export type SidebarEnhanceChildrenType = string | SidebarEnhanceItemType;
 export type SidebarEnhanceSubType = {
   children: SidebarEnhanceChildrenType[];
   title: string;
+  subTitle?: string;
 };
 
 // 增强模式的 sidebar 相关类型
@@ -116,4 +117,4 @@ interface IAdditionalThemeConfig extends Omit<IThemeConfig, 'prefersColor' | 'so
   sidebarEnhance?: Record<string, SidebarEnhanceItems>;
 }
 
-export { IAdditionalThemeConfig, ILocaleEnhance, IFeature, IAction };
+export { IAction, IAdditionalThemeConfig, IFeature, ILocaleEnhance };
