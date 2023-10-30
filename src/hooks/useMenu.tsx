@@ -84,7 +84,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               {menu.subTitle && (
                 <span
                   style={{ opacity: 0.5, display: 'block', fontSize: '0.8em', paddingTop: 3 }}
-                  className={'sub-title'}
+                  className="sub-title"
                 >
                   {menu.subTitle}
                 </span>
