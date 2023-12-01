@@ -1,7 +1,6 @@
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { Affix, Col, ConfigProvider, FloatButton, Menu } from 'antd';
-import { useSidebarData } from 'dumi';
 import MobileMenu from 'rc-drawer';
 import 'rc-drawer/assets/index.css';
 import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
@@ -11,6 +10,22 @@ import SiteContext from '../SiteContext';
 
 interface SidebarState {
   mobileMenuVisible: boolean;
+}
+
+function getParentPath(data: any[] | undefined, key: string) {
+  if (!data || !data.length) return undefined;
+  for (let i = 0; i < data.length; i += 1) {
+    if (data[i].key === key) {
+      return [data[i].key];
+    }
+    if (data[i].children) {
+      const parentPath: any = getParentPath(data[i].children, key);
+      if (parentPath) {
+        return [data[i].key, ...parentPath];
+      }
+    }
+  }
+  return null;
 }
 
 const useStyle = () => {
@@ -129,7 +144,6 @@ const useStyle = () => {
 
 const Sidebar: FC = () => {
   const [sidebarState, setSidebarState] = useState<SidebarState>({ mobileMenuVisible: false });
-  const sidebarData = useSidebarData();
   const styles = useStyle();
   const {
     token: { colorBgContainer }
@@ -161,6 +175,7 @@ const Sidebar: FC = () => {
 
   const { mobileMenuVisible } = sidebarState;
 
+  const defaultOpenKeys = getParentPath(menuItems, selectedKey);
   const menuChild = (
     <ConfigProvider
       theme={{
@@ -178,7 +193,7 @@ const Sidebar: FC = () => {
         mode="inline"
         theme={isDark ? 'dark' : 'light'}
         selectedKeys={[selectedKey]}
-        defaultOpenKeys={sidebarData?.map(({ title }) => title).filter((item) => item) as string[]}
+        defaultOpenKeys={defaultOpenKeys as string[]}
       />
     </ConfigProvider>
   );

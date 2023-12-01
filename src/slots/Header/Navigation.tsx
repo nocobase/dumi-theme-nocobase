@@ -208,6 +208,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
       items={items}
       mode={menuMode}
       css={style.nav}
+      style={{ height: '95%' }}
       selectedKeys={[activeMenuItem]}
       disabledOverflow
     />
