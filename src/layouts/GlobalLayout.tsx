@@ -62,7 +62,7 @@ const GlobalLayout: FC = () => {
 
   const updateMobileMode = useCallback(() => {
     updateSiteConfig({
-      isMobile: window.innerWidth < RESPONSIVE_MOBILE
+      isMobile: typeof window === 'undefined' ? false : window.innerWidth < RESPONSIVE_MOBILE
     });
   }, [updateSiteConfig]);
 
@@ -73,9 +73,13 @@ const GlobalLayout: FC = () => {
     });
     // Handle isMobile
     updateMobileMode();
-    window.addEventListener('resize', updateMobileMode);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', updateMobileMode);
+    }
     return () => {
-      window.removeEventListener('resize', updateMobileMode);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateMobileMode);
+      }
     };
   }, [searchParams, updateMobileMode]);
 

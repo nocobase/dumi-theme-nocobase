@@ -160,7 +160,7 @@ const Header: FC = () => {
   const onWindowResize = useCallback(() => {
     setHeaderState((prev) => ({
       ...prev,
-      windowWidth: window.innerWidth
+      windowWidth: typeof window !== 'undefined' ? window.innerWidth : 0
     }));
   }, []);
   const handleHideMenu = useCallback(() => {
@@ -177,7 +177,9 @@ const Header: FC = () => {
   }, []);
 
   const handleVersionChange = useCallback((url: string) => {
-    window.location.href = url;
+    if (typeof window !== 'undefined') {
+      window.location.href = url;
+    }
   }, []);
 
   useEffect(() => {
@@ -186,9 +188,13 @@ const Header: FC = () => {
 
   useEffect(() => {
     onWindowResize();
-    window.addEventListener('resize', onWindowResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', onWindowResize);
+    }
     return () => {
-      window.removeEventListener('resize', onWindowResize);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', onWindowResize);
+      }
     };
   }, [onWindowResize]);
 

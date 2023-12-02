@@ -87,7 +87,11 @@ const useStyle = () => {
 
 function getNextLang(locale: ILocale, locales: ILocalesConfig, localesEnhance?: ILocaleEnhance[]) {
   const changeLangByHostname = localesEnhance && localesEnhance.every((item) => item.hostname);
-  if (changeLangByHostname && window.location.hostname !== 'localhost') {
+  if (
+    typeof window !== 'undefined' &&
+    changeLangByHostname &&
+    window.location.hostname !== 'localhost'
+  ) {
     const nextLocaleEnhance = localesEnhance.find(
       (item) => item.hostname !== window.location.hostname
     );
