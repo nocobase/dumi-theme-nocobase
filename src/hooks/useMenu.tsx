@@ -99,7 +99,25 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
       if (isItemMenu(menu)) {
         // { title: 'aaa', link: '/xxx' }
         return {
-          label: <ExternalLink to={menu.link}>{menu.title}</ExternalLink>,
+          label: (
+            <ExternalLink to={menu.link}>
+              {menu.subTitle ? (
+                <span style={{ lineHeight: 1.2, display: 'block', paddingTop: 3 }}>
+                  <span>{menu.title}</span>
+                  {menu.subTitle && (
+                    <span
+                      style={{ opacity: 0.5, display: 'block', fontSize: '0.8em', paddingTop: 3 }}
+                      className="sub-title"
+                    >
+                      {menu.subTitle}
+                    </span>
+                  )}
+                </span>
+              ) : (
+                menu.title
+              )}
+            </ExternalLink>
+          ),
           key: menu.link
         };
       }

@@ -41,6 +41,7 @@ interface IFeature {
 
 export type SidebarEnhanceItemType = {
   title: string;
+  subTitle?: string;
   link: string;
   target?: string;
 };
