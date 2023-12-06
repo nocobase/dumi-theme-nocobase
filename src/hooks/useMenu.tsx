@@ -52,7 +52,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     const isSubMenu = (v: any): v is SidebarEnhanceSubType => {
       return v && typeof v === 'object' && 'children' in v;
     };
-    function processMenu(menu: SidebarEnhanceType): ItemType {
+    function processMenu(menu: SidebarEnhanceType, parentKey?: string): ItemType {
       if (typeof menu === 'string') {
         // menu: '/introduction'
         return {
@@ -71,13 +71,13 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
         return {
           type: 'group',
           label: menu.title,
-          key: menu.title,
-          children: menu.children.map(processMenu)
+          key: parentKey ? `${parentKey}-${menu.title}` : menu.title,
+          children: menu.children.map((item) => processMenu(item, menu.title))
         };
       }
       if (isSubMenu(menu)) {
         return {
-          key: menu.title,
+          key: parentKey ? `${parentKey}-${menu.title}` : menu.title,
           label: menu.subTitle ? (
             <span style={{ lineHeight: 1.2, display: 'block', paddingTop: 3 }}>
               <span>{menu.title}</span>
@@ -93,7 +93,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
           ) : (
             <span>{menu.title}</span>
           ),
-          children: menu.children.map(processMenu)
+          children: menu.children.map((item) => processMenu(item, menu.title))
         };
       }
       if (isItemMenu(menu)) {
@@ -107,7 +107,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     }
 
     if (!currentSidebarEnhanceData) return undefined;
-    return currentSidebarEnhanceData.map(processMenu);
+    return currentSidebarEnhanceData.map((item) => processMenu(item));
   }, [after, before, currentSidebarEnhanceData, linkTitleMap, search]);
 
   const menuItems = useMemo<MenuProps['items']>(() => {
