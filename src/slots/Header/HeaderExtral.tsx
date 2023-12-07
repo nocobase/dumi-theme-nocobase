@@ -54,7 +54,14 @@ const HeaderExtra: FC = () => {
     <div>
       {github ? (
         <Tooltip title="Github">
-          <a key="github" href={github} target="_blank" rel="noreferrer">
+          <a
+            role="button"
+            aria-label="GitHub"
+            key="github"
+            href={github}
+            target="_blank"
+            rel="noreferrer"
+          >
             <button css={[style.btn]} type="button">
               <GithubOutlined />
             </button>
