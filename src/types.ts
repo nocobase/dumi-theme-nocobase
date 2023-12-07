@@ -44,6 +44,7 @@ export type SidebarEnhanceItemType = {
   subTitle?: string;
   link: string;
   target?: string;
+  disabled?: boolean;
 };
 
 export type SidebarEnhanceChildrenType = string | SidebarEnhanceItemType;
@@ -51,6 +52,7 @@ export type SidebarEnhanceSubType = {
   children: SidebarEnhanceChildrenType[];
   title: string;
   subTitle?: string;
+  disabled?: boolean;
 };
 
 // 增强模式的 sidebar 相关类型
