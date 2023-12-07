@@ -94,7 +94,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
             <span>{menu.title}</span>
           ),
           children: menu.children.map((item) => processMenu(item, menu.title)),
-          disabled: menu.disabled || !menu.children?.length,
+          disabled: menu.disabled || !menu.children?.length
         };
       }
       if (isItemMenu(menu)) {
@@ -120,7 +120,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
             </ExternalLink>
           ),
           key: menu.link,
-          disabled: menu.disabled || menu.link === '#',
+          disabled: menu.disabled || menu.link === '#'
         };
       }
       return null;
