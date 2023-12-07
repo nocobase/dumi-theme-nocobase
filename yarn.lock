@@ -5502,7 +5502,7 @@ father-plugin-dumi-theme@^1.0.0-rc.1:
   resolved "https://registry.npmmirror.com/father-plugin-dumi-theme/-/father-plugin-dumi-theme-1.0.0-rc.1.tgz#bc6c0890ab3894c51425d0c9ed0785cb02eeacac"
   integrity sha512-Cjbr0VbuGYTb6k6/uGHQVuCGss9/eh1/BV48e0PVQM6cCDMBKNSWCe+Vl69I0bVj+AUFaOIaU7cTYFQ0KcyV0Q==
 
-father@^4.2.1:
+father@^4.3.7:
   version "4.3.7"
   resolved "https://registry.npmmirror.com/father/-/father-4.3.7.tgz#f5a45a5d26b6a49a24399c523d13759a0195a3a8"
   integrity sha512-Jr+mUYqvjrTfss9ZFxDB280FdUoj6IUVH12U5ocQKEISzPWewzpGrrassf7gi4ugmJNDP8I/Rzje8uZ90C4OpA==

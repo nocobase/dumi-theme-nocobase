@@ -3,7 +3,7 @@ import { type IThemeConfig } from 'dumi/dist/client/theme-api/types';
 
 export type ISidebarGroupModePathItem = string | RegExp;
 
-export interface ILocaleEnhance {
+interface ILocaleEnhance {
   /** 同 themeConfig 中 locales 项中的 id */
   id: string;
   /** 当多语言只有两项时用于展示切换的前缀 */
