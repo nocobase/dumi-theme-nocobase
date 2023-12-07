@@ -62,7 +62,7 @@ const HeaderExtra: FC = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <button css={[style.btn]} type="button">
+            <button role="button" aria-label="GitHub" css={[style.btn]} type="button">
               <GithubOutlined />
             </button>
           </a>
