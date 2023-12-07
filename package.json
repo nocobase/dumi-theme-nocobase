@@ -25,8 +25,7 @@
     "dev": "father dev",
     "docs": "cross-env APP_ROOT=example dumi dev",
     "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "postinstall": "yarn cross-env APP_ROOT=example dumi setup",
-    "prepare": "husky install && father link-dev-theme",
+    "prepare": "husky install && father link-dev-theme && yarn cross-env APP_ROOT=example dumi setup",
     "prepublishOnly": "father doctor && npm run build"
   },
   "commitlint": {
