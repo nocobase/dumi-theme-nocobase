@@ -1,8 +1,8 @@
 import { MenuOutlined } from '@ant-design/icons';
 import { ClassNames, css } from '@emotion/react';
-import { Col, Popover, Row, Select } from 'antd';
+import { Alert, Col, Popover, Row, Select } from 'antd';
 import classNames from 'classnames';
-import { useLocation } from 'dumi';
+import { useLocation, useSiteData } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
 // eslint-disable-next-line import/no-unresolved
@@ -62,7 +62,9 @@ const useStyle = () => {
       z-index: 10;
       max-width: 100%;
       background: ${token.colorBgContainer};
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02),
+      box-shadow:
+        0 1px 2px 0 rgba(0, 0, 0, 0.03),
+        0 1px 6px -1px rgba(0, 0, 0, 0.02),
         0 2px 4px 0 rgba(0, 0, 0, 0.02);
       border-bottom: 0;
 
@@ -156,6 +158,9 @@ const Header: FC = () => {
   });
   const location = useLocation();
   const { docVersions } = useAdditionalThemeConfig();
+  const {
+    themeConfig: { alert }
+  } = useSiteData();
 
   const onWindowResize = useCallback(() => {
     setHeaderState((prev) => ({
@@ -243,40 +248,51 @@ const Header: FC = () => {
   const colProps = isHome ? colPropsHome : _colProps;
 
   return (
-    <header css={style.header} className={headerClassName}>
-      {isMobile && (
-        <ClassNames>
-          {({ css: cssFn }) => (
-            <Popover
-              overlayClassName={cssFn(style.popoverMenu)}
-              placement="bottomRight"
-              content={menu}
-              trigger="click"
-              open={menuVisible}
-              arrow
-              onOpenChange={onMenuVisibleChange}
-            >
-              <MenuOutlined className="nav-phone-icon" rev={undefined} />
-            </Popover>
-          )}
-        </ClassNames>
+    <div>
+      <header css={style.header} className={headerClassName}>
+        {isMobile && (
+          <ClassNames>
+            {({ css: cssFn }) => (
+              <Popover
+                overlayClassName={cssFn(style.popoverMenu)}
+                placement="bottomRight"
+                content={menu}
+                trigger="click"
+                open={menuVisible}
+                arrow
+                onOpenChange={onMenuVisibleChange}
+              >
+                <MenuOutlined className="nav-phone-icon" rev={undefined} />
+              </Popover>
+            )}
+          </ClassNames>
+        )}
+        <Row
+          style={{
+            height: 64
+          }}
+        >
+          <Col {...colProps[0]}>
+            <Logo />
+          </Col>
+          <Col {...colProps[1]} css={style.menuRow}>
+            <div className="nav-search-wrapper">
+              <DumiSearchBar />
+            </div>
+            {!isMobile && menu}
+          </Col>
+        </Row>
+      </header>
+      {alert && (
+        <Alert
+          style={{ textAlign: 'center' }}
+          message={<div dangerouslySetInnerHTML={{ __html: alert }} />}
+          banner
+          showIcon={false}
+          type="warning"
+        />
       )}
-      <Row
-        style={{
-          height: 64
-        }}
-      >
-        <Col {...colProps[0]}>
-          <Logo />
-        </Col>
-        <Col {...colProps[1]} css={style.menuRow}>
-          <div className="nav-search-wrapper">
-            <DumiSearchBar />
-          </div>
-          {!isMobile && menu}
-        </Col>
-      </Row>
-    </header>
+    </div>
   );
 };
 
