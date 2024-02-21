@@ -37,7 +37,7 @@ const useStyle = () => {
       }
 
       img {
-        height: 32px;
+        height: 24px;
         margin-right: 12px;
         vertical-align: middle;
 
