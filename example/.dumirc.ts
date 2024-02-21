@@ -27,7 +27,7 @@ export default defineConfig({
       ]
     },
     // alert: '文档正在建设中，部分内容可能缺失或缺少翻译，详情查看 <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">文档更新日志</a>',
-    footer: 'nocobase | Copyright © 2022-present',
+    footer: '© 2020-2024 NocoBase. All rights reserved.',
     github: 'https://github.com/nocobase/dumi-theme-nocobase',
     localesEnhance: [
       { id: 'zh-CN', switchPrefix: '中' },
