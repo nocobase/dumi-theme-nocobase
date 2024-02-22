@@ -76,6 +76,7 @@ const useStyle = () => {
       flex: 1;
       max-width: 750px;
       margin: 0 auto;
+      width: 100%;
 
       &.rtl {
         padding: 0 64px 144px 270px;
@@ -84,8 +85,9 @@ const useStyle = () => {
       @media only screen and (max-width: ${token.screenLG}px) {
         &,
         &.rtl {
-          padding-right: 48px;
-          padding-left: 48px;
+          width: calc(100% - 48px);
+          padding-right: 24px;
+          padding-left: 24px;
         }
       }
     `,
