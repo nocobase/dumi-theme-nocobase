@@ -77,7 +77,7 @@ const useStyle = () => {
       max-width: 750px;
       margin: 0 auto;
       width: 100%;
-      box-size: content-box;
+      box-sizing: content-box;
 
       &.rtl {
         padding: 0 64px 144px 270px;
