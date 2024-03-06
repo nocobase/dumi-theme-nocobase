@@ -19,11 +19,13 @@ export default defineConfig({
     nav: {
       'zh-CN': [
         { title: '指南', link: '/guide/introduce' },
-        { title: '配置', link: '/config/base' }
+        { title: '配置', link: '/config/base' },
+        { title: '官网', link: 'https://cn.nocobase.com/' }
       ],
       'en-US': [
         { title: 'guide', link: '/guide/introduce-en' },
-        { title: 'config', link: '/config/base-en' }
+        { title: 'config', link: '/config/base-en' },
+        { title: 'Home', link: 'https://www.nocobase.com/' }
       ]
     },
     // alert: '文档正在建设中，部分内容可能缺失或缺少翻译，详情查看 <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">文档更新日志</a>',

@@ -2,9 +2,10 @@ import { MenuFoldOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import { Link, useLocale, useLocation, useNavData, useSiteData } from 'dumi';
+import { useLocale, useLocation, useNavData, useSiteData } from 'dumi';
 import { ILocale, ILocalesConfig } from 'dumi/dist/client/theme-api/types';
 import { useCallback } from 'react';
+import ExternalLink from '../../common/ExternalLink';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import { ILocaleEnhance } from '../../types';
@@ -129,12 +130,11 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const locale = useLocale();
   const { github, moreLinks = [], localesEnhance } = useAdditionalThemeConfig();
   const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
-
   // @ts-ignore
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
     const linkKeyValue = navItem.link?.split('/').slice(0, 2).join('/');
     return {
-      label: <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>,
+      label: <ExternalLink to={`${navItem.link}${search}`}>{navItem.title}</ExternalLink>,
       key: linkKeyValue
     };
   });
