@@ -36,7 +36,7 @@ const useStyle = () => {
   return {
     asideContainer: css`
       min-height: 100%;
-      padding-bottom: 48px;
+      padding: 14px 0 14px 14px;
       font-family: Avenir, ${fontFamily}, sans-serif;
 
       &${antCls}-menu-inline {
@@ -76,11 +76,11 @@ const useStyle = () => {
           > ${antCls}-menu-item-group
           > ${antCls}-menu-item-group-list
           > ${antCls}-menu-item {
-          padding-left: 30px !important;
+          padding-left: 14px !important;
 
           ${antCls}-row-rtl & {
-            padding-right: 30px !important;
-            padding-left: 16px !important;
+            padding-right: 14px !important;
+            padding-left: 14px !important;
           }
         }
 
@@ -88,20 +88,20 @@ const useStyle = () => {
         &${antCls}-menu-inline {
           ${antCls}-menu-item-group-title {
             margin-left: 4px;
-            padding-left: 60px;
+            padding-left: 56px;
 
             ${antCls}-row-rtl & {
-              padding-right: 60px;
-              padding-left: 16px;
+              padding-right: 56px;
+              padding-left: 14px;
             }
           }
 
           ${antCls}-menu-item-group-list > ${antCls}-menu-item {
-            padding-left: 80px !important;
+            padding-left: 70px !important;
 
             ${antCls}-row-rtl & {
-              padding-right: 80px !important;
-              padding-left: 16px !important;
+              padding-right: 70px !important;
+              padding-left: 14px !important;
             }
           }
         }
@@ -188,7 +188,7 @@ const Sidebar: FC = () => {
     >
       <Menu
         items={menuItems}
-        inlineIndent={30}
+        inlineIndent={14}
         css={styles.asideContainer}
         mode="inline"
         theme={isDark ? 'dark' : 'light'}

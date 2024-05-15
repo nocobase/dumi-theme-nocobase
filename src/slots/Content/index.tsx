@@ -72,7 +72,7 @@ const useStyle = () => {
       }
     `,
     articleWrapper: css`
-      padding: 0 270px 32px 32px;
+      padding: 32px 270px 32px 32px;
       flex: 1;
       max-width: 750px;
       margin: 0 auto;
