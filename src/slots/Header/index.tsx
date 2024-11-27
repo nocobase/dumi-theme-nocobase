@@ -250,36 +250,72 @@ const Header: FC = () => {
   return (
     <div>
       <header css={style.header} className={headerClassName}>
-        {isMobile && (
-          <ClassNames>
-            {({ css: cssFn }) => (
-              <Popover
-                overlayClassName={cssFn(style.popoverMenu)}
-                placement="bottomRight"
-                content={menu}
-                trigger="click"
-                open={menuVisible}
-                arrow
-                onOpenChange={onMenuVisibleChange}
-              >
-                <MenuOutlined className="nav-phone-icon" rev={undefined} />
-              </Popover>
-            )}
-          </ClassNames>
-        )}
         <Row
-          style={{
-            height: 64
-          }}
+          style={{ height: 64 }}
+          align="middle"
+          justify="space-between"
+          wrap={false} // 防止列换行
         >
-          <Col {...colProps[0]}>
+          {/* Logo 部分，保持不变 */}
+          <Col {...colProps[0]} flex="none" style={{ marginLeft: 15 }}>
             <Logo />
           </Col>
-          <Col {...colProps[1]} css={style.menuRow}>
+
+          {/* 搜索框部分 */}
+          <Col
+            flex="auto"
+            style={{
+              padding: isMobile ? '0 8px' : undefined // 移动端适当缩小左右内边距
+            }}
+          >
             <div className="nav-search-wrapper">
               <DumiSearchBar />
             </div>
-            {!isMobile && menu}
+          </Col>
+
+          {/* 菜单和语言切换部分 */}
+          <Col
+            flex="none"
+            style={{
+              width: 100,
+              height: 50,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '8px' // 使用 gap 来设置子元素之间的间距
+            }}
+          >
+            {isMobile ? (
+              <>
+                {/* 菜单图标 */}
+                <div style={{ display: 'flex', width: 50, height: 1 }}>
+                  <ClassNames>
+                    {({ css: cssFn }) => (
+                      <Popover
+                        overlayClassName={cssFn(style.popoverMenu)}
+                        placement="bottomRight"
+                        content={menu}
+                        trigger="click"
+                        open={menuVisible}
+                        arrow
+                        onOpenChange={onMenuVisibleChange}
+                      >
+                        <MenuOutlined
+                          className="nav-phone-icon"
+                          style={{ display: 'flex', width: 50, height: 1, fontSize: 20 }}
+                        />
+                      </Popover>
+                    )}
+                  </ClassNames>
+                </div>
+                {/* LangSwitch */}
+                <div style={{ display: 'flex', width: 50, marginLeft: 8 }}>
+                  <LangSwitch key="lang-switch" />
+                </div>
+              </>
+            ) : (
+              // 桌面端布局
+              <div css={style.menuRow}>{menu}</div>
+            )}
           </Col>
         </Row>
       </header>
