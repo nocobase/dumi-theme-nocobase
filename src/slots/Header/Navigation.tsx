@@ -2,14 +2,10 @@ import { MenuFoldOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import { useLocale, useLocation, useNavData, useSiteData } from 'dumi';
-import { ILocale, ILocalesConfig } from 'dumi/dist/client/theme-api/types';
-import { useCallback } from 'react';
+import { useLocation, useNavData } from 'dumi';
 import ExternalLink from '../../common/ExternalLink';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
-import { ILocaleEnhance } from '../../types';
-import { getTargetLocalePath } from '../../utils';
 import { getMoreLinksGroup } from './More';
 import { type IResponsive } from './index';
 
@@ -86,49 +82,10 @@ const useStyle = () => {
   };
 };
 
-function getNextLang(locale: ILocale, locales: ILocalesConfig, localesEnhance?: ILocaleEnhance[]) {
-  const changeLangByHostname = localesEnhance && localesEnhance.every((item) => item.hostname);
-  if (
-    typeof window !== 'undefined' &&
-    changeLangByHostname &&
-    window.location.hostname !== 'localhost'
-  ) {
-    const nextLocaleEnhance = localesEnhance.find(
-      (item) => item.hostname !== window.location.hostname
-    );
-    if (nextLocaleEnhance) {
-      const nextLang = locales.find((item) => item.id === nextLocaleEnhance.id);
-      if (nextLang) {
-        return {
-          ...nextLang,
-          nextPath: window.location.href.replace(
-            window.location.hostname,
-            nextLocaleEnhance.hostname!
-          )
-        };
-      }
-    }
-  }
-
-  const nextLang = locales.filter((item) => item.id !== locale.id)[0];
-  const nextPath = getTargetLocalePath({
-    current: locale,
-    target: nextLang
-  });
-  return {
-    ...nextLang,
-    nextPath
-  };
-}
-
 export default function Navigation({ isMobile, responsive }: NavigationProps) {
-  // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
   const navList = useNavData();
-
   const { pathname, search } = useLocation();
-  const { locales } = useSiteData();
-  const locale = useLocale();
-  const { github, moreLinks = [], localesEnhance } = useAdditionalThemeConfig();
+  const { github, moreLinks = [] } = useAdditionalThemeConfig();
   const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
   // @ts-ignore
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
@@ -139,45 +96,6 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
     };
   });
 
-  // 获取小屏幕下多语言导航栏节点
-  const getLangNode = useCallback(() => {
-    if (locales.length < 2) {
-      return null;
-    }
-    if (locales.length === 2) {
-      const nextLang = getNextLang(locale, locales, localesEnhance);
-      return {
-        label: (
-          <a rel="noopener noreferrer" href={nextLang.nextPath}>
-            {nextLang.name}
-          </a>
-        ),
-        key: nextLang.id
-      };
-    }
-    return {
-      label: <span>{locale.name}</span>,
-      key: 'multi-lang',
-      children: locales
-        .filter((item) => item.id !== locale.id)
-        .map((item) => {
-          const nextPath = getTargetLocalePath({
-            current: locale,
-            target: item
-          });
-          return {
-            label: (
-              <a rel="noopener noreferrer" href={nextPath}>
-                {item.name}
-              </a>
-            ),
-            key: item.id
-          };
-        })
-    };
-  }, [locale, locales, localesEnhance]);
-
-  let additional: MenuProps['items'];
   const additionalItems: MenuProps['items'] = [
     github
       ? {
@@ -189,13 +107,13 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
           key: 'github'
         }
       : null,
-    getLangNode(),
     ...(getMoreLinksGroup(moreLinks) || [])
   ];
 
+  let additional: MenuProps['items'];
   if (isMobile) {
     additional = additionalItems;
-  } else if (responsive === 'crowded') {
+  } else if (responsive === 'crowded' || responsive === 'narrow') {
     additional = [
       {
         label: <MenuFoldOutlined />,
@@ -204,9 +122,11 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
       }
     ];
   }
+
   const items: MenuProps['items'] = [...(menuItems ?? []), ...(additional ?? [])];
   const menuMode = isMobile ? 'inline' : 'horizontal';
   const style = useStyle();
+
   return (
     <Menu
       items={items}

@@ -277,17 +277,23 @@ const Header: FC = () => {
           <Col
             flex="none"
             style={{
-              width: 100,
-              height: 50,
               display: 'flex',
-              justifyContent: 'center',
-              gap: '8px' // 使用 gap 来设置子元素之间的间距
+              alignItems: 'center',
+              ...(isMobile
+                ? {
+                    width: 120,
+                    height: 50
+                  }
+                : {
+                    // 桌面端布局，不设置固定宽度
+                    css: style.menuRow
+                  })
             }}
           >
             {isMobile ? (
               <>
-                {/* 菜单图标 */}
-                <div style={{ display: 'flex', width: 50, height: 1 }}>
+                <div style={{ width: 80 }}>
+                  {/* 菜单图标 */}
                   <ClassNames>
                     {({ css: cssFn }) => (
                       <Popover
@@ -308,13 +314,14 @@ const Header: FC = () => {
                   </ClassNames>
                 </div>
                 {/* LangSwitch */}
-                <div style={{ display: 'flex', width: 50, marginLeft: 8 }}>
+                <div style={{ display: 'flex' }}>
                   <LangSwitch key="lang-switch" />
                 </div>
               </>
             ) : (
-              // 桌面端布局
-              <div css={style.menuRow}>{menu}</div>
+              // 桌面端布局，保持原有菜单
+              // eslint-disable-next-line react/jsx-no-useless-fragment
+              <>{menu}</>
             )}
           </Col>
         </Row>
