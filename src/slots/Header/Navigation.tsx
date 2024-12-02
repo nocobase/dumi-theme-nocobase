@@ -1,4 +1,3 @@
-import { MenuFoldOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
@@ -112,16 +111,7 @@ export default function Navigation({ isMobile, menuMode }: NavigationProps) {
   let additional: MenuProps['items'];
   if (isMobile || menuMode === 'inline') {
     additional = additionalItems;
-  } else {
-    additional = [
-      {
-        label: <MenuFoldOutlined />,
-        key: 'additional',
-        children: [...additionalItems]
-      }
-    ];
   }
-
   const items: MenuProps['items'] = [...(menuItems ?? []), ...(additional ?? [])];
   const mode = menuMode || (isMobile ? 'inline' : 'horizontal');
   const style = useStyle();
