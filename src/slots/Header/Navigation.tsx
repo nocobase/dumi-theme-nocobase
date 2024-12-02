@@ -7,11 +7,10 @@ import ExternalLink from '../../common/ExternalLink';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import { getMoreLinksGroup } from './More';
-import { type IResponsive } from './index';
 
 export interface NavigationProps {
   isMobile: boolean;
-  responsive: IResponsive;
+  menuMode?: 'inline' | 'horizontal';
 }
 
 const useStyle = () => {
@@ -82,7 +81,7 @@ const useStyle = () => {
   };
 };
 
-export default function Navigation({ isMobile, responsive }: NavigationProps) {
+export default function Navigation({ isMobile, menuMode }: NavigationProps) {
   const navList = useNavData();
   const { pathname, search } = useLocation();
   const { github, moreLinks = [] } = useAdditionalThemeConfig();
@@ -111,9 +110,9 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   ];
 
   let additional: MenuProps['items'];
-  if (isMobile) {
+  if (isMobile || menuMode === 'inline') {
     additional = additionalItems;
-  } else if (responsive === 'crowded' || responsive === 'narrow') {
+  } else {
     additional = [
       {
         label: <MenuFoldOutlined />,
@@ -124,14 +123,14 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   }
 
   const items: MenuProps['items'] = [...(menuItems ?? []), ...(additional ?? [])];
-  const menuMode = isMobile ? 'inline' : 'horizontal';
+  const mode = menuMode || (isMobile ? 'inline' : 'horizontal');
   const style = useStyle();
 
   return (
     <Menu
       items={items}
-      mode={menuMode}
-      css={style.nav}
+      mode={mode}
+      css={mode === 'inline' ? style.popoverMenuNav : style.nav}
       style={{ height: '95%' }}
       selectedKeys={[activeMenuItem]}
       disabledOverflow

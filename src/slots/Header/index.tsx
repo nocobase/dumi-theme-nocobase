@@ -20,10 +20,10 @@ interface HeaderState {
   windowWidth: number;
   menuVisible: boolean;
 }
-export type IResponsive = null | 'narrow' | 'crowded';
+export type IResponsive = 'large' | 'medium' | 'small';
 
-const RESPONSIVE_XS = 1120;
-const RESPONSIVE_SM = 1200;
+const RESPONSIVE_LG = 1200;
+const RESPONSIVE_MD = 1120;
 
 const colPropsHome = [
   {
@@ -211,38 +211,50 @@ const Header: FC = () => {
     clearfix: true,
     'home-header': isHome
   });
-  let responsive: IResponsive = null;
 
-  if (windowWidth < RESPONSIVE_XS) {
-    responsive = 'crowded';
-  } else if (windowWidth < RESPONSIVE_SM) {
-    responsive = 'narrow';
+  let responsive: IResponsive = 'large';
+  if (windowWidth < RESPONSIVE_MD) {
+    responsive = 'small';
+  } else if (windowWidth < RESPONSIVE_LG) {
+    responsive = 'medium';
   }
 
-  const navigationNode = <Navigation key="nav" isMobile={isMobile} responsive={responsive} />;
-  const versionOptions = Object.keys(docVersions ?? {}).map((version) => ({
-    value: docVersions?.[version],
-    label: version
-  }));
-  let menu: (React.ReactElement | null)[] = [
-    navigationNode,
-    versionOptions.length > 0 ? (
-      <Select
-        key="version"
-        size="small"
-        defaultValue={versionOptions[0]?.value}
-        onChange={handleVersionChange}
-        popupMatchSelectWidth={false}
-        getPopupContainer={(trigger) => trigger.parentNode}
-        options={versionOptions}
-      />
-    ) : null,
-    <More key="more" />,
-    <HeaderExtra key="header-Extra" />,
-    <LangSwitch key={new Date().getTime()} />
-  ];
-  if (windowWidth < RESPONSIVE_XS) {
-    menu = [navigationNode];
+  const navigationNode = (
+    <Navigation
+      key="nav"
+      isMobile={isMobile}
+      menuMode={responsive === 'large' ? 'horizontal' : 'inline'}
+    />
+  );
+
+  let menu: React.ReactNode;
+
+  if (responsive === 'large') {
+    const versionOptions = Object.keys(docVersions ?? {}).map((version) => ({
+      value: docVersions?.[version],
+      label: version
+    }));
+    menu = (
+      <>
+        {navigationNode}
+        {versionOptions.length > 0 && (
+          <Select
+            key="version"
+            size="small"
+            defaultValue={versionOptions[0]?.value}
+            onChange={handleVersionChange}
+            popupMatchSelectWidth={false}
+            getPopupContainer={(trigger) => trigger.parentNode}
+            options={versionOptions}
+          />
+        )}
+        <More key="more" />
+        <HeaderExtra key="header-Extra" />
+        <LangSwitch key={new Date().getTime()} />
+      </>
+    );
+  } else {
+    menu = navigationNode;
   }
 
   const colProps = isHome ? colPropsHome : _colProps;
@@ -265,7 +277,7 @@ const Header: FC = () => {
           <Col
             flex="auto"
             style={{
-              padding: isMobile ? '0 8px' : undefined // 移动端适当缩小左右内边距
+              padding: responsive !== 'large' ? '0 8px' : undefined // 中小尺寸适当缩小左右内边距
             }}
           >
             <div className="nav-search-wrapper">
@@ -279,18 +291,18 @@ const Header: FC = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              ...(isMobile
+              ...(responsive !== 'large'
                 ? {
                     width: 120,
                     height: 50
                   }
                 : {
-                    // 桌面端布局，不设置固定宽度
+                    // 大尺寸下，使用菜单行样式
                     css: style.menuRow
                   })
             }}
           >
-            {isMobile ? (
+            {responsive !== 'large' ? (
               <>
                 <div style={{ width: 80 }}>
                   {/* 菜单图标 */}
@@ -313,13 +325,13 @@ const Header: FC = () => {
                     )}
                   </ClassNames>
                 </div>
-                {/* LangSwitch */}
+                {/* 语言切换 */}
                 <div style={{ display: 'flex' }}>
                   <LangSwitch key="lang-switch" />
                 </div>
               </>
             ) : (
-              // 桌面端布局，保持原有菜单
+              // 大尺寸下，显示完整菜单
               // eslint-disable-next-line react/jsx-no-useless-fragment
               <>{menu}</>
             )}
