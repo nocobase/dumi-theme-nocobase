@@ -67,6 +67,7 @@ const useStyle = () => {
         0 1px 6px -1px rgba(0, 0, 0, 0.02),
         0 2px 4px 0 rgba(0, 0, 0, 0.02);
       border-bottom: 0;
+      padding-right: 20px; /* 添加右侧内边距 */
 
       @media only screen and (max-width: ${token.mobileMaxWidth}px) {
         text-align: center;
@@ -288,6 +289,7 @@ const Header: FC = () => {
           {/* 菜单和语言切换部分 */}
           <Col
             flex="none"
+            css={responsive === 'large' ? style.menuRow : undefined} // 正确应用 css 属性
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -296,10 +298,7 @@ const Header: FC = () => {
                     width: 120,
                     height: 50
                   }
-                : {
-                    // 大尺寸下，使用菜单行样式
-                    css: style.menuRow
-                  })
+                : {})
             }}
           >
             {responsive !== 'large' ? (
