@@ -332,29 +332,6 @@ export default () => {
 
               td {
                 border-width: 1px 0;
-                &:first-of-type {
-                  min-width: 58px;
-                  color: #595959;
-                  font-weight: 600;
-                  white-space: nowrap;
-                }
-
-                &:nth-of-type(2) {
-                  min-width: 160px;
-                }
-
-                &:nth-of-type(3) {
-                  color: ${token['magenta-7']};
-                  font-size: ${Math.max(token.fontSize - 1, 15)}px;
-                }
-
-                &:nth-of-type(4) {
-                  font-size: ${Math.max(token.fontSize - 1, 15)}px;
-                }
-
-                &:nth-of-type(5) {
-                  font-size: ${Math.max(token.fontSize - 1, 15)}px;
-                }
               }
             }
           }
