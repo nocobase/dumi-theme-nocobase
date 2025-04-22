@@ -279,12 +279,17 @@ export default () => {
             border: 1px solid ${token.colorSplit};
             border-collapse: collapse;
             border-spacing: 0;
+            table-layout: fixed;
+            width: 100%;
 
             th,
             td {
               padding: 12px 24px;
               text-align: left;
               border: 1px solid ${token.colorSplit};
+              word-break: break-word;
+              font-weight: normal;
+              color: ${token.colorText};
 
               &:first-of-type {
                 border-left: 1px solid ${token.colorSplit};
@@ -326,6 +331,9 @@ export default () => {
               line-height: ${token.lineHeight};
               border: 1px solid ${token.colorSplit};
               border-width: 0 1px;
+              table-layout: fixed;
+              width: 100%;
+
               th {
                 border-width: 1px 0 2px;
               }
