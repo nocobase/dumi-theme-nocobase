@@ -1,4 +1,4 @@
-import type { MenuProps } from 'antd';
+import { MenuProps, Tag } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { useFullSidebarData, useLocation, useSidebarData } from 'dumi';
 import type { ReactNode } from 'react';
@@ -113,9 +113,39 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                       {menu.subTitle}
                     </span>
                   )}
+                  {menu.extra && (
+                    <Tag
+                      bordered={false}
+                      color="green"
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        right: 0,
+                        transform: 'translateY(-50%)'
+                      }}
+                    >
+                      {menu.extra}
+                    </Tag>
+                  )}
                 </span>
               ) : (
-                menu.title
+                <span>
+                  <span>{menu.title}</span>
+                  {menu.extra && (
+                    <Tag
+                      bordered={false}
+                      color="green"
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        right: 0,
+                        transform: 'translateY(-50%)'
+                      }}
+                    >
+                      {menu.extra}
+                    </Tag>
+                  )}
+                </span>
               )}
             </ExternalLink>
           ),

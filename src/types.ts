@@ -43,6 +43,7 @@ export type SidebarEnhanceItemType = {
   title: string;
   subTitle?: string;
   link: string;
+  extra?: string;
   target?: string;
   disabled?: boolean;
 };
@@ -60,6 +61,7 @@ export type SidebarEnhanceGroupChildren = (SidebarEnhanceSubType | SidebarEnhanc
 export type SidebarEnhanceGroupType = {
   type: 'group';
   title: string;
+  extra?: string;
   children: SidebarEnhanceGroupChildren;
 };
 export type SidebarEnhanceType =
